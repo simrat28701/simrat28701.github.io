@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Simrat Kaur Khalsa — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0a0a0a;--surface:#141414;--card:#1c1c1c;--hover:#252525;
+  --accent:#e8c96a;--accent2:#5DCAA5;
+  --purple:#AFA9EC;--purple-bg:#1a1a2e;--purple-border:#534AB7;
+  --text:#e8e8e6;--muted:#888780;--border:#2a2a2a;
+}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+.hero-band{background:var(--surface);border-bottom:1px solid var(--border);padding:2.5rem 2rem 2rem;}
+.hero-inner{max-width:900px;margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.hero-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.75rem;}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,9vw,84px);line-height:0.95;color:var(--text);}
+.hero-name span{color:var(--accent);}
+.hero-tagline{margin-top:0.75rem;font-size:15px;color:var(--muted);max-width:420px;line-height:1.65;}
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;}
+.hero-badge{font-size:11px;padding:5px 13px;border-radius:100px;border:1px solid var(--border);color:var(--muted);white-space:nowrap;}
+.hero-badge.active{border-color:var(--accent2);color:var(--accent2);}
+.hero-links{display:flex;gap:8px;margin-top:4px;}
+.hero-link{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);text-decoration:none;padding:6px 13px;border:0.5px solid var(--border);border-radius:8px;transition:color 0.15s,border-color 0.15s;}
+.hero-link:hover{color:var(--accent);border-color:var(--accent);}
+
+.nav-row{background:var(--surface);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;gap:0;overflow-x:auto;}
+.nav-tab{font-size:13px;padding:14px 16px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:color 0.15s,border-color 0.15s;letter-spacing:0.04em;user-select:none;white-space:nowrap;}
+.nav-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.nav-tab:hover:not(.active){color:var(--text);}
+
+/* PAGES */
+.page{display:none;max-width:900px;margin:0 auto;padding:2.5rem 2rem;}
+.page.active{display:block;}
+.row-label{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.5rem;}
+.row-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:0.04em;color:var(--text);margin-bottom:1.4rem;}
+
+/* STAT CARDS */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:2.5rem;}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--accent);line-height:1;}
+.stat-lbl{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:0.04em;}
+
+/* CARDS GRID */
+.cards-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:2.5rem;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;transition:border-color 0.15s,background 0.15s;}
+.card:hover{background:var(--hover);border-color:#444;}
+.card-tag{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.5rem;}
+.card-title{font-size:14px;font-weight:500;color:var(--text);line-height:1.4;margin-bottom:0.4rem;}
+.card-sub{font-size:12px;color:var(--muted);line-height:1.55;}
+.badge{display:inline-block;margin-top:0.75rem;font-size:10px;padding:3px 10px;border-radius:100px;}
+.badge-teal{background:#1f3a2e;color:#5DCAA5;border:0.5px solid #5DCAA5;}
+.badge-gold{background:#2e2a1a;color:var(--accent);border:0.5px solid var(--accent);}
+.badge-gray{background:#222;color:var(--muted);border:0.5px solid var(--border);}
+
+/* PAPER CARDS */
+.paper-full{background:var(--card);border:1px solid var(--purple-border);border-radius:12px;padding:1.75rem;margin-bottom:1.25rem;transition:background 0.15s,border-color 0.15s;}
+.paper-full:hover{border-color:#7F77DD;background:var(--hover);}
+.paper-header{display:flex;gap:1.25rem;align-items:flex-start;margin-bottom:1rem;}
+.paper-icon{width:46px;height:46px;border-radius:10px;background:var(--purple-bg);border:1px solid var(--purple-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--purple);font-size:20px;}
+.paper-number{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--purple);margin-bottom:4px;}
+.paper-title{font-size:16px;font-weight:500;color:var(--text);line-height:1.4;margin-bottom:4px;}
+.paper-course{font-size:12px;color:var(--muted);}
+.paper-abstract{font-size:13px;color:#a0a09a;line-height:1.75;margin-bottom:1rem;border-left:2px solid var(--purple-border);padding-left:1rem;}
+.findings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1rem;}
+.finding-box{background:#111;border:0.5px solid var(--border);border-radius:8px;padding:0.75rem;}
+.finding-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.finding-val{font-size:13px;font-weight:500;color:var(--text);line-height:1.4;}
+.tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;}
+.tag{font-size:11px;padding:4px 10px;border-radius:6px;background:#1a1a1a;border:0.5px solid var(--border);color:var(--muted);}
+.paper-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.status-badge{font-size:11px;padding:4px 12px;border-radius:100px;background:var(--purple-bg);color:var(--purple);border:0.5px solid var(--purple-border);}
+.status-badge.gray{background:#1a1a1a;color:var(--muted);border-color:var(--border);}
+.ext-link{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);text-decoration:none;padding:6px 14px;border:0.5px solid var(--border);border-radius:8px;transition:color 0.15s,border-color 0.15s;}
+.ext-link:hover{color:var(--accent);border-color:var(--accent);}
+
+/* PROJECT CARDS */
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.6rem;margin-bottom:12px;transition:border-color 0.15s,background 0.15s;}
+.proj-card:hover{background:var(--hover);border-color:#3a3a3a;}
+.proj-header{display:flex;gap:14px;align-items:flex-start;margin-bottom:0.85rem;}
+.proj-icon{width:42px;height:42px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
+.proj-icon.amber{background:#201800;border:1px solid #854F0B;color:#EF9F27;}
+.proj-icon.green{background:#0f200f;border:1px solid #3B6D11;color:#97C459;}
+.proj-icon.blue{background:#0d1f35;border:1px solid #185FA5;color:#85B7EB;}
+.proj-title{font-size:15px;font-weight:500;color:var(--text);line-height:1.35;margin-bottom:3px;}
+.proj-sub{font-size:12px;color:var(--muted);}
+.proj-desc{font-size:13px;color:#a0a09a;line-height:1.75;margin-bottom:1rem;}
+.proj-findings{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1rem;}
+.proj-finding{background:#111;border:0.5px solid var(--border);border-radius:8px;padding:0.65rem 0.8rem;}
+.proj-finding-label{font-size:10px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px;}
+.proj-finding-val{font-size:12px;font-weight:500;color:var(--text);line-height:1.4;}
+.proj-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.proj-pills{display:flex;flex-wrap:wrap;gap:5px;}
+.proj-pill{font-size:11px;padding:3px 9px;border-radius:6px;background:#1a1a1a;border:0.5px solid var(--border);color:var(--muted);}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:1.6rem;}
+.timeline::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:1px;background:var(--border);}
+.tl-item{position:relative;margin-bottom:2rem;}
+.tl-dot{position:absolute;left:-1.6rem;top:4px;width:13px;height:13px;border-radius:50%;background:var(--accent2);border:2px solid var(--bg);}
+.tl-date{font-size:11px;color:var(--accent2);letter-spacing:0.06em;margin-bottom:3px;}
+.tl-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.tl-org{font-size:12px;color:var(--muted);margin-bottom:8px;}
+.tl-bullets{list-style:none;padding:0;}
+.tl-bullets li{font-size:13px;color:#a0a09a;line-height:1.65;padding-left:16px;position:relative;margin-bottom:4px;}
+.tl-bullets li::before{content:'—';position:absolute;left:0;color:var(--border);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;margin-bottom:2.5rem;}
+.skill-group-title{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;}
+.pill-wrap{display:flex;flex-wrap:wrap;gap:7px;}
+.pill{font-size:12px;padding:5px 13px;border-radius:7px;background:#1a1a1a;border:0.5px solid var(--border);color:var(--text);}
+
+/* CONTACT */
+.contact-block{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;max-width:520px;}
+.crow{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:0.5px solid var(--border);font-size:14px;}
+.crow:last-child{border-bottom:none;}
+.crow i{font-size:18px;color:var(--accent2);width:22px;}
+.crow a{color:var(--accent);text-decoration:none;}
+.crow a:hover{text-decoration:underline;}
+
+/* FOOTER */
+footer{text-align:center;padding:2.5rem 1rem;font-size:12px;color:var(--muted);border-top:1px solid var(--border);letter-spacing:0.06em;}
+footer a{color:var(--accent);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero-band">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Portfolio · 2026</div>
+      <div class="hero-name">Simrat<br/><span>Kaur</span> Khalsa</div>
+      <div class="hero-tagline">Translating data into meaningful insights — for the bigger good.</div>
+    </div>
+    <div class="hero-right">
+      <span class="hero-badge active">MSc Economics &amp; Data Science · In Progress</span>
+      <span class="hero-badge">First-Class Distinction — Year 1</span>
+      <div class="hero-links">
+        <a href="https://www.linkedin.com/in/simrat-khalsa/" class="hero-link" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+        <a href="https://github.com/simrat28701" class="hero-link" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>GitHub</a>
+        <a href="mailto:sk113@kent.ac.uk" class="hero-link"><i class="ti ti-mail"></i>Email</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-row">
+  <div class="nav-inner">
+    <div class="nav-tab active" onclick="showTab('home',this)">Home</div>
+    <div class="nav-tab" onclick="showTab('experience',this)">Experience</div>
+    <div class="nav-tab" onclick="showTab('research',this)">Research</div>
+    <div class="nav-tab" onclick="showTab('projects',this)">Projects</div>
+    <div class="nav-tab" onclick="showTab('skills',this)">Skills</div>
+    <div class="nav-tab" onclick="showTab('contact',this)">Contact</div>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="tab-home" class="page active">
+  <div class="row-label">Overview</div>
+  <div class="row-title">At a glance</div>
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-num">1st</div><div class="stat-lbl">Class distinction, Year 1</div></div>
+    <div class="stat-box"><div class="stat-num">70+</div><div class="stat-lbl">Scholars managed globally</div></div>
+    <div class="stat-box"><div class="stat-num">2</div><div class="stat-lbl">SSRN papers submitted</div></div>
+    <div class="stat-box"><div class="stat-num">3</div><div class="stat-lbl">GitHub data projects</div></div>
+  </div>
+
+  <div class="row-label">Education</div>
+  <div class="row-title">Academic journey</div>
+  <div class="cards-row">
+    <div class="card">
+      <div class="card-tag">2024 – 2026</div>
+      <div class="card-title">MSc Economics &amp; Data Science</div>
+      <div class="card-sub">University of Kent, UK &amp; Aix-Marseille Université, France</div>
+      <span class="badge badge-teal">Dual-Award · International</span>
+    </div>
+    <div class="card">
+      <div class="card-tag">2019 – 2023</div>
+      <div class="card-title">BA Economics</div>
+      <div class="card-sub">Virginia Tech, Blacksburg, USA</div>
+      <span class="badge badge-gold">Dean's List · Fall 2020 &amp; Spring 2021</span>
+    </div>
+    <div class="card">
+      <div class="card-tag">Extra-curricular</div>
+      <div class="card-title">Leadership at Virginia Tech</div>
+      <div class="card-sub">Board Member, AI/ML Club · VP, Badminton Club · Exec, Sikh Student Assoc.</div>
+      <span class="badge badge-gray">3 Roles</span>
+    </div>
+  </div>
+
+  <div class="row-label">Goals</div>
+  <div class="row-title">Where I'm headed</div>
+  <div class="cards-row">
+    <div class="card">
+      <div class="card-tag">Career</div>
+      <div class="card-title">Data Science</div>
+      <div class="card-sub">Building models &amp; systems that surface hidden patterns for evidence-based decisions.</div>
+    </div>
+    <div class="card">
+      <div class="card-tag">Career</div>
+      <div class="card-title">Strategy Consulting</div>
+      <div class="card-sub">Advising organisations with data-driven frameworks — translating insight into action at scale.</div>
+    </div>
+    <div class="card">
+      <div class="card-tag">Mission</div>
+      <div class="card-title">Impact-Driven Work</div>
+      <div class="card-sub">Applying economics &amp; data science to policy, sustainability, and public good.</div>
+    </div>
+    <div class="card">
+      <div class="card-tag">Mission</div>
+      <div class="card-title">Meaningful Communication</div>
+      <div class="card-sub">Translating complex quantitative findings into clear narratives for diverse stakeholders.</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="tab-experience" class="page">
+  <div class="row-label">Work history</div>
+  <div class="row-title">Experience</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Jun 2025 – Jan 2026 · Remote</div>
+      <div class="tl-title">Scholar Programme Manager (Contract)</div>
+      <div class="tl-org">Sandai Global</div>
+      <ul class="tl-bullets">
+        <li>Managed accountability &amp; delivery tracking for 70+ scholars across the US, Canada, and India against programme milestones</li>
+        <li>Researched and evaluated emerging AI tools, producing knowledge resources adopted by the wider team</li>
+        <li>Collaborated with CEO and senior leadership on strategic initiatives, events, and organisational growth</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">May 2023 – Jul 2024 · Blacksburg, USA</div>
+      <div class="tl-title">Research Assistant</div>
+      <div class="tl-org">Virginia Tech</div>
+      <ul class="tl-bullets">
+        <li>Built MATLAB models of mosquito population dynamics to evaluate disease control intervention strategies</li>
+        <li>Analysed large-scale socioeconomic &amp; municipal datasets using GIS tools to identify geographic patterns linked to infection hotspots</li>
+      </ul>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">May – Sep 2023 · Remote</div>
+      <div class="tl-title">Fellow</div>
+      <div class="tl-org">Sandai Global</div>
+      <ul class="tl-bullets">
+        <li>Surveyed 200+ healthcare providers to build a nationwide database of skill demand and hiring needs across 50 US states</li>
+        <li>Used Excel, pivot tables, and Tableau to analyse workforce patterns and present findings to stakeholders</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div id="tab-research" class="page">
+  <div class="row-label">Academic work</div>
+  <div class="row-title">Research &amp; papers</div>
+
+  <div class="paper-full">
+    <div class="paper-header">
+      <div class="paper-icon"><i class="ti ti-file-analytics"></i></div>
+      <div>
+        <div class="paper-number">Paper 1 · Econometrics &amp; Policy</div>
+        <div class="paper-title">Economic Diversification in Saudi Arabia: The Role of Oil Rents, FDI, and Vision 2030</div>
+        <div class="paper-course">University of Kent · March 2026</div>
+      </div>
+    </div>
+    <div class="paper-abstract">Examines the impact of oil rents, FDI, and the Vision 2030 reform programme on economic diversification in Saudi Arabia (1990–2021) using time-series econometrics — OLS with HAC (Newey-West) standard errors, interaction analysis, and IV estimation via 2SLS. Finds oil rents support the "resource blessing" hypothesis; Vision 2030 produced a significant positive level shift; FDI remains statistically insignificant across all specifications.</div>
+    <div class="findings-grid">
+      <div class="finding-box"><div class="finding-label">Oil rents</div><div class="finding-val">+0.141 units diversification (p &lt; 0.01)</div></div>
+      <div class="finding-box"><div class="finding-label">Vision 2030</div><div class="finding-val">+1.895 unit level shift (p &lt; 0.05)</div></div>
+      <div class="finding-box"><div class="finding-label">FDI result</div><div class="finding-val">Insignificant across all specs</div></div>
+    </div>
+    <div class="tags-row">
+      <span class="tag">Time-Series Econometrics</span><span class="tag">OLS / HAC / 2SLS</span><span class="tag">Saudi Arabia</span><span class="tag">Vision 2030</span><span class="tag">Resource Blessing</span><span class="tag">Stata</span>
+    </div>
+    <div class="paper-footer">
+      <span class="status-badge"><i class="ti ti-clock" style="font-size:12px;vertical-align:-1px;margin-right:4px;"></i>Under review · SSRN</span>
+      <a href="https://github.com/simrat28701/sa-economic-diversification" class="ext-link" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>View on GitHub</a>
+    </div>
+  </div>
+
+  <div class="paper-full">
+    <div class="paper-header">
+      <div class="paper-icon"><i class="ti ti-leaf"></i></div>
+      <div>
+        <div class="paper-number">Paper 2 · Environmental Economics</div>
+        <div class="paper-title">Internalizing Externalities: An Analysis of Pigovian Taxes and Environmental Policy Failures</div>
+        <div class="paper-course">ECON7007 — Sustainable Growth &amp; Environmental Valuation · University of Kent · May 2026</div>
+      </div>
+    </div>
+    <div class="paper-abstract">Examines the theoretical foundations and practical limitations of Pigovian taxation through three comparative case studies: Ireland's plastic bag levy (success), Spain's Royal Decree 900/2015 "Sun Tax" (failure), and London's evolving congestion and emission charge regime (mixed). Identifies recurring causes of policy failure and proposes design principles for effective environmental taxation.</div>
+    <div class="findings-grid">
+      <div class="finding-box"><div class="finding-label">Ireland bag levy</div><div class="finding-val">90% use reduction in year one</div></div>
+      <div class="finding-box"><div class="finding-label">Spain Sun Tax (SCM)</div><div class="finding-val">Actively slowed PV adoption post-2015</div></div>
+      <div class="finding-box"><div class="finding-label">London ULEZ</div><div class="finding-val">19% reduction in NO₂</div></div>
+    </div>
+    <div class="tags-row">
+      <span class="tag">Pigovian Tax</span><span class="tag">Synthetic Control Method</span><span class="tag">Environmental Policy</span><span class="tag">ULEZ / Congestion Charge</span><span class="tag">Negative Externalities</span>
+    </div>
+    <div class="paper-footer">
+      <span class="status-badge"><i class="ti ti-clock" style="font-size:12px;vertical-align:-1px;margin-right:4px;"></i>Under review · SSRN</span>
+      <span class="status-badge gray">No repo · paper only</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="tab-projects" class="page">
+  <div class="row-label">GitHub projects</div>
+  <div class="row-title">Data &amp; research projects</div>
+
+  <div class="proj-card">
+    <div class="proj-header">
+      <div class="proj-icon amber"><i class="ti ti-chart-line"></i></div>
+      <div>
+        <div class="proj-title">Economic Diversification in Saudi Arabia</div>
+        <div class="proj-sub">Time-Series Econometrics · Stata · LaTeX · 2026</div>
+      </div>
+    </div>
+    <div class="proj-desc">Full replication repository for the SSRN working paper. Contains the World Bank dataset (1990–2021), Stata analysis scripts with OLS, HAC, 2SLS, and Chow test estimation, compiled output, and LaTeX source. Dataset also published independently on Kaggle.</div>
+    <div class="proj-findings">
+      <div class="proj-finding"><div class="proj-finding-label">Dataset</div><div class="proj-finding-val">World Bank · 1990–2021</div></div>
+      <div class="proj-finding"><div class="proj-finding-label">Methods</div><div class="proj-finding-val">OLS · HAC · 2SLS · Chow</div></div>
+      <div class="proj-finding"><div class="proj-finding-label">Languages</div><div class="proj-finding-val">Stata · TeX · CSV</div></div>
+    </div>
+    <div class="proj-footer">
+      <div class="proj-pills"><span class="proj-pill">Stata</span><span class="proj-pill">LaTeX</span><span class="proj-pill">Econometrics</span><span class="proj-pill">Kaggle dataset</span></div>
+      <a href="https://github.com/simrat28701/sa-economic-diversification" class="ext-link" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>View repo</a>
+    </div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-header">
+      <div class="proj-icon green"><i class="ti ti-world"></i></div>
+      <div>
+        <div class="proj-title">Climate Risk Exposure of S&amp;P 500 Companies</div>
+        <div class="proj-sub">Python · Jupyter Notebook · Folium · 2026</div>
+      </div>
+    </div>
+    <div class="proj-desc">Analyses the physical climate risk exposure of all S&amp;P 500 companies based on their headquarters location, using NOAA climate hazard data across five risk categories: wildfire, flooding, hurricane, extreme heat, and drought. Includes an interactive choropleth map of company risk distribution.</div>
+    <div class="proj-findings">
+      <div class="proj-finding"><div class="proj-finding-label">Key finding</div><div class="proj-finding-val">54.3% of S&amp;P 500 in high-risk states</div></div>
+      <div class="proj-finding"><div class="proj-finding-label">Highest-risk sector</div><div class="proj-finding-val">Energy — highest avg exposure</div></div>
+      <div class="proj-finding"><div class="proj-finding-label">Output</div><div class="proj-finding-val">Interactive risk map (HTML)</div></div>
+    </div>
+    <div class="proj-footer">
+      <div class="proj-pills"><span class="proj-pill">Python</span><span class="proj-pill">pandas</span><span class="proj-pill">folium</span><span class="proj-pill">seaborn</span><span class="proj-pill">NOAA data</span></div>
+      <a href="https://github.com/simrat28701/climate-risk-analysis" class="ext-link" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>View repo</a>
+    </div>
+  </div>
+
+  <div class="proj-card">
+    <div class="proj-header">
+      <div class="proj-icon blue"><i class="ti ti-trending-up"></i></div>
+      <div>
+        <div class="proj-title">Value Factor Quantitative Research</div>
+        <div class="proj-sub">Python · Jupyter Notebook · Quantitative Finance · 2025</div>
+      </div>
+    </div>
+    <div class="proj-desc">Quantitative research into the value factor in equity markets, exploring factor construction, backtesting, and performance attribution. Investigates whether value-based stock screening strategies generate alpha over standard benchmarks.</div>
+    <div class="proj-findings">
+      <div class="proj-finding"><div class="proj-finding-label">Focus</div><div class="proj-finding-val">Value factor · equity screening</div></div>
+      <div class="proj-finding"><div class="proj-finding-label">Approach</div><div class="proj-finding-val">Quant backtesting &amp; factor analysis</div></div>
+      <div class="proj-finding"><div class="proj-finding-label">Language</div><div class="proj-finding-val">Python · Jupyter 100%</div></div>
+    </div>
+    <div class="proj-footer">
+      <div class="proj-pills"><span class="proj-pill">Python</span><span class="proj-pill">Quantitative Finance</span><span class="proj-pill">Factor Analysis</span><span class="proj-pill">Backtesting</span></div>
+      <a href="https://github.com/simrat28701/portfolio-analysis" class="ext-link" target="_blank" rel="noopener"><i class="ti ti-brand-github"></i>View repo</a>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="tab-skills" class="page">
+  <div class="row-label">Capabilities</div>
+  <div class="row-title">Skills &amp; tools</div>
+  <div class="skills-grid">
+    <div>
+      <div class="skill-group-title">Technical tools</div>
+      <div class="pill-wrap">
+        <span class="pill">Python</span><span class="pill">R</span><span class="pill">SQL</span><span class="pill">MATLAB</span><span class="pill">Stata</span><span class="pill">Tableau</span><span class="pill">Power BI</span><span class="pill">Excel</span><span class="pill">GIS</span><span class="pill">JSON</span><span class="pill">Shapr3D</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Analytical</div>
+      <div class="pill-wrap">
+        <span class="pill">Econometrics</span><span class="pill">Statistical Modelling</span><span class="pill">Time-Series Analysis</span><span class="pill">IV / 2SLS</span><span class="pill">Synthetic Control</span><span class="pill">Factor Analysis</span><span class="pill">Data Visualisation</span><span class="pill">Research Design</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Professional</div>
+      <div class="pill-wrap">
+        <span class="pill">Programme Management</span><span class="pill">Strategic Initiatives</span><span class="pill">Stakeholder Communication</span><span class="pill">Data Storytelling</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">Languages</div>
+      <div class="pill-wrap">
+        <span class="pill">English (native)</span><span class="pill">Punjabi (native)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="tab-contact" class="page">
+  <div class="row-label">Get in touch</div>
+  <div class="row-title">Contact</div>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:1.75rem;max-width:480px;line-height:1.65;">Open to opportunities in data science, analytics, consulting, and research. Always happy to connect with like-minded people.</p>
+  <div class="contact-block">
+    <div class="crow"><i class="ti ti-mail"></i><span><a href="mailto:sk113@kent.ac.uk">sk113@kent.ac.uk</a></span></div>
+    <div class="crow"><i class="ti ti-phone"></i><span>07387 730672</span></div>
+    <div class="crow"><i class="ti ti-brand-linkedin"></i><span><a href="https://www.linkedin.com/in/simrat-khalsa/" target="_blank" rel="noopener">linkedin.com/in/simrat-khalsa</a></span></div>
+    <div class="crow"><i class="ti ti-brand-github"></i><span><a href="https://github.com/simrat28701" target="_blank" rel="noopener">github.com/simrat28701</a></span></div>
+    <div class="crow"><i class="ti ti-map-pin"></i><span>Canterbury, UK &amp; Aix-en-Provence, France</span></div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Simrat Kaur Khalsa &nbsp;·&nbsp; <a href="https://github.com/simrat28701" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/simrat-khalsa/" target="_blank" rel="noopener">LinkedIn</a>
+</footer>
+
+<script>
+function showTab(id, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
