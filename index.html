@@ -120,6 +120,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;ove
 .pill-wrap{display:flex;flex-wrap:wrap;gap:7px;}
 .pill{font-size:12px;padding:5px 13px;border-radius:7px;background:#1a1a1a;border:0.5px solid var(--border);color:var(--text);}
 
+/* RECOMMENDATIONS */
+.rec-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:2.5rem;}
+.rec-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.6rem;display:flex;flex-direction:column;justify-content:space-between;gap:1.25rem;transition:border-color 0.15s,background 0.15s;}
+.rec-card:hover{background:var(--hover);border-color:#3a3a3a;}
+.rec-quote{font-size:13px;color:#b8b8b2;line-height:1.8;font-style:italic;position:relative;padding-left:1rem;border-left:2px solid var(--accent);}
+.rec-footer{display:flex;align-items:center;gap:12px;}
+.rec-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#1f3a2e,#0f6e56);border:1px solid var(--accent2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--accent2);flex-shrink:0;letter-spacing:0.05em;}
+.rec-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.rec-role{font-size:11px;color:var(--muted);line-height:1.4;}
+@media(max-width:600px){.rec-cards{grid-template-columns:1fr;}}
+
 /* CONTACT */
 .contact-block{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;max-width:520px;}
 .crow{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:0.5px solid var(--border);font-size:14px;}
@@ -226,6 +237,31 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="card-tag">Mission</div>
       <div class="card-title">Meaningful Communication</div>
       <div class="card-sub">Translating complex quantitative findings into clear narratives for diverse stakeholders.</div>
+    </div>
+  </div>
+
+  <div class="row-label">Recommendations</div>
+  <div class="row-title">What others say</div>
+  <div class="rec-cards">
+    <div class="rec-card">
+      <div class="rec-quote">"She has a unique ability to not only do the work required, but to think creatively about the work she is doing and to interpret and present it in a way that highlights its importance. I am certain that after receiving training in your program, she will be among the top candidates for jobs globally."</div>
+      <div class="rec-footer">
+        <div class="rec-avatar">MR</div>
+        <div>
+          <div class="rec-name">Michael A. Robert, PhD</div>
+          <div class="rec-role">Assistant Professor, Dept. of Mathematics · Virginia Tech</div>
+        </div>
+      </div>
+    </div>
+    <div class="rec-card">
+      <div class="rec-quote">"Simrat consistently demonstrated exceptional leadership, diligence, and technical skill. Her enthusiasm for data-driven innovation and commitment to excellence made her a standout intern within our organisation. Her ability to manage complex datasets, conduct meaningful analysis, and propose innovative solutions showcased a level of maturity and professionalism that far exceeded her years."</div>
+      <div class="rec-footer">
+        <div class="rec-avatar">JW</div>
+        <div>
+          <div class="rec-name">Jeremy Williams, Jr.</div>
+          <div class="rec-role">CFO / Director of Operations · SaNDAI Companies</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
