@@ -29,6 +29,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;ove
 .hero-links{display:flex;gap:8px;margin-top:4px;}
 .hero-link{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);text-decoration:none;padding:6px 13px;border:0.5px solid var(--border);border-radius:8px;transition:color 0.15s,border-color 0.15s;}
 .hero-link:hover{color:var(--accent);border-color:var(--accent);}
+.hero-photo{width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--border);flex-shrink:0;}
+.hero-left-inner{display:flex;gap:1.5rem;align-items:flex-end;}
 
 .nav-row{background:var(--surface);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:50;}
 .nav-inner{max-width:900px;margin:0 auto;display:flex;gap:0;overflow-x:auto;}
@@ -136,10 +138,13 @@ footer a{color:var(--accent);text-decoration:none;}
 <!-- HERO -->
 <div class="hero-band">
   <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">Portfolio · 2026</div>
-      <div class="hero-name">Simrat<br/><span>Kaur</span> Khalsa</div>
-      <div class="hero-tagline">Translating data into meaningful insights — for the bigger good.</div>
+    <div class="hero-left-inner">
+      <img src="photo.jpg" alt="Simrat Kaur Khalsa" class="hero-photo"/>
+      <div>
+        <div class="hero-eyebrow">Portfolio · 2026</div>
+        <div class="hero-name">Simrat<br/><span>Kaur</span> Khalsa</div>
+        <div class="hero-tagline">Translating data into meaningful insights — for the bigger good.</div>
+      </div>
     </div>
     <div class="hero-right">
       <span class="hero-badge active">MSc Economics &amp; Data Science · In Progress</span>
